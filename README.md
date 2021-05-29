@@ -1,2 +1,3 @@
-# digital-writing-twine
- 
+# Typewriter text example
+
+A typewriter text example.
