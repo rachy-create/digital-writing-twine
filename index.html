@@ -6,16 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <!-- custom font -->
-    <link rel="preconnect" href="https://fonts.gstatic.com"> 
-<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap"
+      rel="stylesheet"
+    />
 
     <title>The Breakdown</title>
 
     <!-- styles -->
     <style>
       body {
-        font-family: 'Inconsolata', monospace;
+        font-family: "Inconsolata", monospace;
         margin: 2em;
         background-color: #F51814;
         color: #000000;
@@ -41,8 +43,10 @@
     <script>
       // set up the lists of words
       const subjects = "I".split(","),
-        verbs = "feel,am,am,want to,can't,am not".split(","),    
-        objects = "pathetic,stupid,worthless,hurt,write,lost,a failure,crazy,tired,scared,homesick".split(",");
+        verbs = "feel,am,am,want to,can't,am not".split(","),
+        objects = "pathetic,stupid,worthless,hurt,write,lost,a failure,crazy,tired,scared,homesick".split(
+          ","
+        );
       // set up the counter
       let counter = 0;
 
@@ -62,7 +66,7 @@
           getRandomFromList(subjects) +
           " " +
           getRandomFromList(verbs) +
-          "  " + 
+          "  " +
           getRandomFromList(objects);
         const lineText = document.createTextNode(text);
         line.appendChild(lineText);
