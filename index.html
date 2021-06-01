@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" />
     <!-- custom font -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -12,97 +12,67 @@
       rel="stylesheet"
     />
 
-    <title>The Breakdown</title>
 
+    <title>To the Inner North and my Early Twenties</title>
+
+    <meta name="description" content="A love letter." />
     <!-- styles -->
     <style>
       body {
-        font-family: "Inconsolata", monospace;
-        margin: 2em;
-        background-color: #F51814;
+      font-family: "Inconsolata", monospace;
+      background-color: #F51814;
         color: #000000;
-        font-size: 1.2em;
-      }
-      h1 {
-        color: #000000;
-      }
-      #poem > div {
-        height: 1.2em;
-      }
-      .indent {
-        padding-left: 1em;
-      }
-      .turtle {
-        color: green;
-      }
     </style>
   </head>
   <body>
-    <h1>The Breakdown</h1>
-    <div id="poem"></div>
+    <h1>To the Inner North and my Early Twenties</h1>
+    <p id="para-0"></p>
+    <p id="para-1"></p>
+    <p id="para-2"></p>
+    <p id="para-3"></p>
+    <p id="para-4"></p>
+    <p id="para-5"></p>
+    <p id="para-6"></p>
+    <!-- script -->
     <script>
-      // set up the lists of words
-      const subjects = "I".split(","),
-        verbs = "feel,am,am,want to,can't,am not".split(","),
-        objects = "pathetic,stupid,worthless,hurt,write,lost,a failure,crazy,tired,scared,homesick".split(
-          ","
-        );
-      // set up the counter
-      let counter = 0;
+      const text = [
+        "I just wanted to thank you for everything. I met you when my life was a thunderstorm, but you brought sunshine in it with your craziness and beautiful spontaneity.",
+        "You made me laugh, you made me cry, but most of all you made me 'me' again. You reminded me of the woman I strive to be, and brought her to life. Thank you for that.",
+        "But what is love without pain, and loss? As much as you gave to me, you took from me, and at times I hated you for that. I see now that you were only doing what you thought was right, and though the pain still flares up at times I'm better for it. Stronger.",
+        "I also want to thank you for all the beautiful moments you shared with me. It was not love at first sight. You challenged me, but through those challenges I fell deeper in love than I thought I ever could.",
+        "I am so happy you crossed my path. You have changed me and shaped me, and I hope in some small way I've left my mark on you. Who knows where the future will take us? You will always have a place in my heart.",
+        "Rachel",
+        "               "
+      ];
+      let paraCounter = 0;
+      let charCounter = 0;
+      let typeWriterInterval;
 
-      // a function to pull a random item from a list
-      function getRandomFromList(list) {
-        return list[Math.floor(Math.random() * list.length)];
-      }
-      // add a line to the poem constructed from the lists of words
-      function addLine(indent = false) {
-        // create the line
-        const line = document.createElement("div");
-        if (indent === true) {
-          // indent is true so add an indent class
-          line.classList.add("indent");
+      function addLetter() {
+        if (paraCounter < text.length) {
+          const para = document.getElementById("para-" + paraCounter);
+          para.innerHTML = text[paraCounter].slice(
+            0,
+            charCounter + 1
+          );
+          charCounter++;
+          if (charCounter >= text[paraCounter].length) {
+            paraCounter++;
+            charCounter = 0;
+          }
         }
-        const text =
-          getRandomFromList(subjects) +
-          " " +
-          getRandomFromList(verbs) +
-          "  " +
-          getRandomFromList(objects);
-        const lineText = document.createTextNode(text);
-        line.appendChild(lineText);
-        // get the poem
-        const poem = document.getElementById("poem");
-        poem.appendChild(line);
-      }
-      // add a blank line to the poem
-      function addBlankLine() {
-        const line = document.createElement("div");
-        const poem = document.getElementById("poem");
-        poem.appendChild(line);
-      }
-      // remove the first line from the poem
-      function removeFirstLine() {
-        const poem = document.getElementById("poem");
-        poem.removeChild(poem.childNodes[0]);
-      }
-      // implement the rules of the poem
-      function processPoem() {
-        counter++;
-        if (counter % 5 === 0) {
-          addBlankLine();
-        } else if (counter % 5 === 2 || counter % 5 === 4) {
-          // if the second or fourth line add the line with an indent
-          addLine(true);
-        } else {
-          addLine();
+        else {
+          for (let i=0; i <text.length; i++){
+            const para = document.getElementById("para-" + i);
+            para.innerHTML = "";
+          }
+          paraCounter = 0;
+          charCounter = 0;
         }
-        if (counter > 15) {
-          removeFirstLine();
-        }
+        
       }
-      window.setInterval(processPoem, 1000);
+      typeWriterInterval = setInterval(addLetter, 75);
     </script>
-
     <!-- include the Glitch button to show what the webpage is about and
           to make it easier for folks to view source and remix -->
     <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
